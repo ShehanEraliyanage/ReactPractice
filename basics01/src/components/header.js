@@ -1,16 +1,44 @@
 import React, { Component } from "react";
 
 class Header extends Component {
-  inputChangeHandler(event, name) {
-    console.log(event.target.value);
-    console.log(name);
+  state = {
+    name: "shehan",
+    title: "The Keywords is",
+    keywords: "",
+    count: 0,
+  };
+
+  inputChangehandler = (event) => {
+    this.setState({
+      keywords: event.target.value,
+    });
+  };
+
+  addOne() {
+    //basic way to do this
+    // this.setState({
+    //   count: this.state.count + 1,
+    // });
+
+    // now we use like this
+
+    this.setState((state, props) => ({
+      count: state.count + 1,
+    }));
   }
 
   render() {
     return (
       <header>
         <div className="logo">logo</div>
-        <input onChange={(e) => this.inputChangeHandler(e, "Ron")} />
+        <input onChange={this.inputChangehandler} />
+        <div>{this.state.title}</div>
+        <div>{this.state.keywords}</div>
+        <br></br>
+        <div>{this.state.count}</div>
+        <div>
+          <button onClick={(e) => this.addOne()}>Click Here</button>
+        </div>
       </header>
     );
   }
