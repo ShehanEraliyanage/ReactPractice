@@ -1,7 +1,24 @@
-import React from "react";
+import React, { Component } from "react";
 
-const Header = () => {
-  return <div>Hellow!</div>;
-};
+class Header extends Component {
+  render() {
+    return (
+      <header>
+        <div className="logo">logo</div>
+        <input />
+      </header>
+    );
+  }
+}
+// let styles = {
+//   header: {
+//     background: "#03a9fa",
+//   },
+//   logo: {
+//     color: "#fff",
+//     fontFamily: "Anton",
+//     textAlign: "center",
+//   },
+// };
 
 export default Header;
