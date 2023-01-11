@@ -1,24 +1,19 @@
 import React, { Component } from "react";
 
 class Header extends Component {
+  inputChangeHandler(event, name) {
+    console.log(event.target.value);
+    console.log(name);
+  }
+
   render() {
     return (
       <header>
         <div className="logo">logo</div>
-        <input />
+        <input onChange={(e) => this.inputChangeHandler(e, "Ron")} />
       </header>
     );
   }
 }
-// let styles = {
-//   header: {
-//     background: "#03a9fa",
-//   },
-//   logo: {
-//     color: "#fff",
-//     fontFamily: "Anton",
-//     textAlign: "center",
-//   },
-// };
 
 export default Header;
