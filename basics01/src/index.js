@@ -10,21 +10,29 @@ import Footer from "./components/footer";
 class App extends Component {
   state = {
     news: JSON,
+    filtered:JSON,
     footerText:'This is Footer'
   };
 
-  getkeywords = () => {
-    console.log('hikeywqords')
+  getkeywords = (event) => {
+    let keywords = event.target.value;
+    let filtered = this.state.news.filter((item) => {
+      return item.title.indexOf(keywords) > -1;
+     
+    })
+    this.setState({
+       filtered
+     })
   }
 
   render() {
-    const { news,footerText } = this.state;
+    const { news,footerText,filtered } = this.state;
     return (
       <>
         <Header
           keywords = {this.getkeywords}
         />
-        <NewsList news={news}>
+        <NewsList news={filtered}>
           <br />
           <h2>This is children</h2>
         </NewsList> 
