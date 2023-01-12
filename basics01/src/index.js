@@ -17,7 +17,10 @@ class App extends Component {
     return (
       <>
         <Header />
-        <NewsList news={news} />
+        <NewsList news={news}>
+          <br />
+          <h2>This is children</h2>
+        </NewsList> 
         <Footer footerText={ footerText} />
       </>
     );
