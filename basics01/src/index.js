@@ -12,11 +12,18 @@ class App extends Component {
     news: JSON,
     footerText:'This is Footer'
   };
+
+  getkeywords = () => {
+    console.log('hikeywqords')
+  }
+
   render() {
     const { news,footerText } = this.state;
     return (
       <>
-        <Header />
+        <Header
+          keywords = {this.getkeywords}
+        />
         <NewsList news={news}>
           <br />
           <h2>This is children</h2>

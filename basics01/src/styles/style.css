@@ -23,3 +23,9 @@ header input {
   box-sizing: border-box;
   border-bottom: 1px solid grey;
 }
+.not_active{
+  background: purple;
+}
+.active{
+  background: #ff0080;
+}
