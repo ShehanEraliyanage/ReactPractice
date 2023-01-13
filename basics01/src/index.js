@@ -6,12 +6,15 @@ import JSON from "./db.json";
 import Header from "./components/header";
 import NewsList from "./components/news_list";
 import Footer from "./components/footer";
+import Life from "./components/lifeCycle";
+
 
 class App extends Component {
   state = {
     news: JSON,
     filtered:JSON,
-    footerText:'This is Footer'
+    footerText: 'This is Footer',
+    active:true
   };
 
   getkeywords = (event) => {
@@ -26,16 +29,24 @@ class App extends Component {
   }
 
   render() {
-    const { news,footerText,filtered } = this.state;
+    const { news,footerText,filtered,active } = this.state;
     return (
       <>
         <Header
           keywords = {this.getkeywords}
         />
-        <NewsList news={filtered}>
+        {/* <NewsList news={filtered}>
           <br />
           <h2>This is children</h2>
-        </NewsList> 
+        </NewsList>  */}
+        {active ? <Life />
+          : null
+        
+        }
+        
+        <button onClick={()=>this.setState({active:!active})}>Click Here</button>
+
+
         <Footer footerText={ footerText} />
       </>
     );
