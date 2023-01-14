@@ -1,82 +1,31 @@
-import React, { useState, useEffect } from "react";
-import Post from "./post";
+import React, { useState,useCallback } from "react";
 
-const App = ({initalCount}) => {
+import Title from './components/title'
+import Count from "./components/count"
+import CountBtn from "./components/countBtn";
+import Age from "./components/age";
+import AgeBtn from "./components/ageBtn";
+
+const App = () => {
   
-  // let [count, setCount] = useState(initalCount  );
+  const [count, setCount] = useState(0);
+  const [age, setAge] = useState(10)
 
-  const [state, setState] = useState({
-    count: initalCount,
-    name: 'shehan'
-  })
 
-  let [post, setPost] = useState([
-    {
-      name: 'This is first post',
-      body: 'First Body'
-    },
-    {
-      name: 'This is second post',
-      body: 'Second Body'
-    }
-  ])
-
-  const addPost = () => {
-    let newPost = {
-      name: 'New Post',
-      body: 'new Body'
-    }
-    setPost([
-      ...post,
-      newPost
-    ])
-  }
-
-  const addOne = () => {
-    setState({
-      ...state,
-      count: state.count + 1
-    });
-   }
-
-  const restOne = () => {
-    setState({
-      ...state,
-      count: state.count - 1
-    })
-  }
-   const resetOne = () => {
-     setState({
-       ...state,
-       count: state.count = initalCount
-     })
-  }
-  const removePost = () => {
-    setPost([])
-  }
-  useEffect(() => {
-    // console.log('state updated')
-  },[state])
+  const IncreementCount = useCallback(() => {
+    setCount(count+1)
+  },[count] )
+  const IncreementAge = useCallback(() => {
+    setAge(age+1)
+  },[age])
    
   return (
     <>
-      <h2>{state.name }</h2>
-      <h3>count : {state.count}</h3>
-      <button onClick={addOne}>Add one +1</button>
-      <button onClick={restOne}>Rest one -1</button>
-      <button onClick={resetOne}>Reset</button>
-      <div>
-        <button onClick={addPost}>ADD Post</button>
-        <button onClick={removePost}>Remove Post</button>
-      </div>
-      <hr/>
-      
-    
-        {post.map((item,i) => (
-          <Post item={item} id = {i}/>
-        ))}
- 
-
+      <Title />
+      <Count count={count} />
+      <CountBtn handleCount={IncreementCount} />
+      <Age age={age} />
+      <AgeBtn handleAge = {IncreementAge}/>
     </>
   );
 }
