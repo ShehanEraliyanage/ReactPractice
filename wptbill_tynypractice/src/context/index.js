@@ -10,12 +10,21 @@ class MyProvider  extends Component{
         results:''
     }
 
+    addPlayerHandler = (name)=> {
+        this.setState((prevState) => ({
+            players: [
+                ...prevState.players,
+                name
+            ]
+        }))
+    }
 
 
     render() {
         return (
             <MyContext.Provider value={{
-                state:this.state
+                state: this.state,
+                addPlayer: this.addPlayerHandler
             }}>
                 {this.props.children}
             </MyContext.Provider>         
