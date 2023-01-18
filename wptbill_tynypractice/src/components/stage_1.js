@@ -64,7 +64,7 @@ const Stage1 = () => {
                       <li key={idx} className = 'list-group-item d-flex justify-content-between align-items-center list-group-item-action'>
                         {item}
                         <span className="badge badge-danger"
-                          onClick={()=>alert('remove')}
+                          onClick={()=>context.removePlayer(idx)}
                         >
                           x
                         </span>
@@ -72,6 +72,13 @@ const Stage1 = () => {
                     ))
                   }
                 </ul>
+                <div className="action_button"
+                  onClick={() => (
+                    context.next()
+                  )}
+                >
+                  NEXT
+                </div>
               </div>
             </>
             :

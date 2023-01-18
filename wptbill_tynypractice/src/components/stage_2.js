@@ -1,11 +1,17 @@
-import React from "react";
+import React,{useContext} from "react";
+
+import { MyContext } from "../context";
 
 
 const Stage2 = () => {
+
+   const context = useContext(MyContext);
   return (
-    <div className="App">
-      stage2
-    </div>
+    <>
+      <div className="res ">
+
+      </div>
+    </>
   );
 }
 
