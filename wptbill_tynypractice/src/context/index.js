@@ -34,10 +34,29 @@ class MyProvider  extends Component{
                 autoClose:2000
             })
         } else {
-            console.log('move to stage two')
+            this.setState({
+                stage: 2
+            }, () => {
+                setTimeout(() => {
+                    this.genarateLooser();
+                },2000)
+            })
         }
     }
 
+    genarateLooser = () => {
+        const { players } = this.state;
+        this.setState({
+            results: players[Math.floor(Math.random() * players.length)]
+        })
+    }
+    resetGame = () => {
+        this.setState = ({
+        stage: 1,
+        players: [],
+        results:''
+        })
+    }
 
     render() {
         return (
@@ -46,7 +65,9 @@ class MyProvider  extends Component{
                 state: this.state,
                 addPlayer: this.addPlayerHandler,
                 removePlayer: this.removePlayerHandler,
-                next:this.nexthandler
+                next: this.nexthandler,
+                checkLosser: this.genarateLooser,
+                resetGame:this.resetGame
             }}>
                 {this.props.children}
             </MyContext.Provider>
