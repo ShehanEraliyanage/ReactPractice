@@ -10,6 +10,7 @@ const Header = () => {
                 <h5 className="my-0 mr-md-auto font-weight-normal">Company name</h5>
                 <nav className="my-2 my-md-0 mr-md-3">
                 <Link className="p-2 text-dark" to="/">Home</Link>
+                <Link className="p-2 text-dark" to="/pureComp">PureComp</Link>
                 </nav>
             </div>
         </header>
