@@ -1,10 +1,11 @@
 import React from "react";
-import { BrowserRouter,Swich,Route,Routes } from "react-router-dom";
+import { BrowserRouter,Route,Routes } from "react-router-dom";
 
 import Header from "./components/Header";
 import Home from "./components/Home";
 import PureComp from './components/PureComp'
 import PureCompF from "./components/purecompF";
+import Adjel from './components/adjel'
 
 
 
@@ -14,6 +15,7 @@ const App = ()=> {
       <Header />
       <div className="container">
         <Routes>
+          <Route path="/adjel" element={<Adjel/>} />
           <Route path="/pureComp" element={<PureComp/>} />
           <Route path="/pureCompF" element={<PureCompF/>} />
           <Route path="/" element={<Home />} />
