@@ -1,18 +1,50 @@
 import React from 'react';
 
+import {Formik} from 'formik'
+
 
 const FormOne = () => {
 
-    return (
-      <div className="container">
+  return (
+      
+    <Formik
+      initialValues={{
+        firstname: '',
+        lastname: '',
+        email: '',
+        country: '',
+        state: '',
+        zip:''
+      }}
+      onSubmit={() => {
+        console.log('form submitted.')
+      }}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit
+      })=>(
+        <>
+          <div className="container">
         <div className="col-md-12 mt-5">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h4 className="mb-3">Personal information</h4>
   
           <div className="row">
             <div className="col-md-6 mb-3">
               <label htmlFor="firstname">First name</label>
-              <input type="text" className="form-control" id="firstname" name="firstname"/>
+              <input type="text"
+                className="form-control"
+                id="firstname"
+                name="firstname"
+                value={values.firstname}
+                onChange={handleChange}      
+                
+                />
             </div>
             <div className="col-md-6 mb-3">
               <label htmlFor="lastname">Last name</label>
@@ -60,6 +92,10 @@ const FormOne = () => {
         </form>
         </div>
       </div>
+        </>
+      )}
+    </Formik>
+      
     );
 
 }
