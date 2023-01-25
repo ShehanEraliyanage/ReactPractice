@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Formik } from "formik";
+import * as Yup from "yup";
 
 const FormOne = () => {
   return (
@@ -13,35 +14,45 @@ const FormOne = () => {
         state: "",
         zip: "",
       }}
-      validate={(values) => {
-        const errors = {};
+      validationSchema={Yup.object({
+        firstname: Yup.string().required("Sorry, this is required"),
+        lastname: Yup.string().required("Sorry, this is required"),
+        email: Yup.string()
+          .required("Sorry, this is required")
+          .email("need valid email address"),
+        country: Yup.string().required("Sorry, this is required"),
+        state: Yup.string().required("Sorry, this is required"),
+        zip: Yup.string().required("Sorry, this is required"),
+      })}
+      // validate={(values) => {
+      //   const errors = {};
 
-        if (!values.firstname) {
-          errors.firstname = "sorry this is required";
-        }
-        if (!values.lastname) {
-          errors.lastname = "sorry this is required";
-        }
-        if (!values.email) {
-          errors.email = "sorry this is required";
-        } else if (
-          !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-            values.email
-          )
-        ) {
-          errors.email = "Invalid email";
-        }
-        if (!values.country) {
-          errors.country = "sorry this is required";
-        }
-        if (!values.state) {
-          errors.state = "sorry this is required";
-        }
-        if (!values.zip) {
-          errors.zip = "sorry this is required";
-        }
-        return errors;
-      }}
+      //   if (!values.firstname) {
+      //     errors.firstname = "sorry this is required";
+      //   }
+      //   if (!values.lastname) {
+      //     errors.lastname = "sorry this is required";
+      //   }
+      //   if (!values.email) {
+      //     errors.email = "sorry this is required";
+      //   } else if (
+      //     !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      //       values.email
+      //     )
+      //   ) {
+      //     errors.email = "Invalid email";
+      //   }
+      //   if (!values.country) {
+      //     errors.country = "sorry this is required";
+      //   }
+      //   if (!values.state) {
+      //     errors.state = "sorry this is required";
+      //   }
+      //   if (!values.zip) {
+      //     errors.zip = "sorry this is required";
+      //   }
+      //   return errors;
+      // }}
       onSubmit={(values) => {
         console.log(values);
       }}
