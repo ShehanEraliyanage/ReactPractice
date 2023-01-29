@@ -18,16 +18,12 @@ class TransitionComp extends Component{
             <>
                 <Transition
                     in = {this.state.show}
-                    timeout = {2000}
+                    timeout = {1000}
                 >
                     {state => (
-                        <div
-                            style={{
-                                background: "red", height: "100px", transition: "all 2s ease",
-                                opacity: state === 'entering' || state === 'exited' ? 0 : 1
-                            }}
-                        >
-                            {state}
+                        <div className={`square square-${state}`}>                      
+                        
+                            {`square square-${state}`}
                         </div>
                     ) }
                 </Transition>

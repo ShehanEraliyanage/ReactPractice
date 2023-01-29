@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 // COMPONENTS
-import Header from './components/header';
+import Header from './components/Header';
 import CssTr from './components/CSStransition';
 import Tgroup from './components/Tgroup';
 import TransitionComp from './components/Transition';
